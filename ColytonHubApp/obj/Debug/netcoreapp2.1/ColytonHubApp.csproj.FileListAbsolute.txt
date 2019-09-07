@@ -1,0 +1,11 @@
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\obj\Debug\netcoreapp2.1\ColytonHubApp.csproj.CoreCompileInputs.cache
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\obj\Debug\netcoreapp2.1\ColytonHubApp.AssemblyInfoInputs.cache
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\obj\Debug\netcoreapp2.1\ColytonHubApp.AssemblyInfo.cs
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\bin\Debug\netcoreapp2.1\ColytonHubApp.deps.json
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\bin\Debug\netcoreapp2.1\ColytonHubApp.dll
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\bin\Debug\netcoreapp2.1\ColytonHubApp.pdb
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\obj\Debug\netcoreapp2.1\ColytonHubApp.dll
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\obj\Debug\netcoreapp2.1\ColytonHubApp.pdb
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\bin\Debug\netcoreapp2.1\ColytonHubApp.runtimeconfig.json
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\bin\Debug\netcoreapp2.1\ColytonHubApp.runtimeconfig.dev.json
+D:\Sahr\Projects\ColytonHubWebApp\ColytonHubApp\ColytonHubApp\obj\Debug\netcoreapp2.1\ColytonHubApp.csprojAssemblyReference.cache
