@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Registration Page";
+}
+
+@model IEnumerable<ColytonHubApp.UI.Models.Registration.IndexViewModel>
+
+<br />
+<p>
+    <a asp-controller="Registration" asp-action="Create">Register a new Person</a>
+</p>
+
+
+<h2>List of Registered People at Colyton Hub</h2>
+
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@person.FullName</td>
+                <td>
+                    <ul>
+                        <li><a asp-controller="Registration" asp-action="Edit" asp-route-id="@person.Id">Edit</a></li>
+                        <li><a asp-controller="Registration" asp-action="Details" asp-route-id="@person.Id">Details</a></li>
+                        <li><a asp-controller="Registration" asp-action="Delete" asp-route-id="@person.Id">Delete</a></li>
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,398 @@
+﻿
+@{
+    ViewData["Title"] = "Registration Form";
+}
+
+@model ColytonHubApp.UI.Models.Registration.CreateViewModel
+
+
+
+<div>
+    <h2 class="col-sm-10">Colyton Community Hub Registration Form</h2>
+    <a asp-controller="Registration" asp-action="Index" class="col-sm-2"><strong>List of Hub members</strong></a>
+    <br /><br />
+</div>
+<br />
+<div>
+    <form class="form-horizontal" method="post">
+        <!-- <div asp-validation-summary="All"></div>-->
+        <div style="border: 1px solid lightgrey">
+            <br />
+            <div class="form-group">
+                <label asp-for="FirstName" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="alert-danger"></span>
+                </div>
+                <label asp-for="LastName" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="alert-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DOB" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="DOB" class="form-control" />
+                    <span asp-validation-for="DOB" class="alert-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Street" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="Street" class="form-control" />
+                    <span asp-validation-for="Street" class="alert-danger"></span>
+                </div>
+                <label asp-for="Suburb" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="Suburb" class="form-control" />
+                    <span asp-validation-for="Suburb" class="alert-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="State" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <select asp-for="State" asp-items="Model.States" class="form-control"></select>
+                    <span asp-validation-for="State" class="alert-danger"></span>
+                </div>
+                <label asp-for="PostCode" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="PostCode" class="form-control" />
+                    <span asp-validation-for="PostCode" class="alert-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="alert-danger"></span>
+                </div>
+                <label asp-for="Email" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="alert-danger"></span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div style="border: 1px solid lightgrey">
+            <br />
+            <div class="form-group">
+                <label asp-for="SelectedSpokenLang" class="col-sm-2 control-label"></label>
+                <input asp-for="SelectedSpokenLang" type="hidden" id="hiddenSelSpokenLang"/>
+                @*<div id="langCheckboxes" class="col-sm-8" style="border: 1px solid lightgrey">*@
+                <div class="col-sm-8" style="border: 1px solid lightgrey">
+                    @{
+                        var count = Enumerable.Count(Model.SpokenLanguages);
+                        foreach (var item in Model.SpokenLanguages)
+                        {
+                            <input class="selLangCheck" type="checkbox" value="@item.Id" />
+                            @item.Name
+                            if (--count > 0)
+                            {
+                                @:|
+
+
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsInterpretorRequired" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="IsInterpretorRequired" id="interpretorChk" />
+                </div>
+                <div class="interpretorDropDown" style="display: none;">
+                    <label asp-for="InterpretorLanguage" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-4">
+                        <select asp-for="InterpretorLanguage" asp-items="Model.Language" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CountryId" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <select asp-for="CountryId" asp-items="Model.Country" class="form-control"></select>
+                    <span asp-validation-for="CountryId" class="alert-danger"></span>
+                </div>
+                <label asp-for="DateOfArrival" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="DateOfArrival" class="form-control" />
+                    <span asp-validation-for="DateOfArrival" class="alert-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <!--Children code will go here-->
+        <br />
+        <div class="form-group" style="border: 1px solid lightgrey">
+            <br/>
+            <label asp-for="NoOfChildren" class="col-sm-3 control-label"></label>
+            <div class="col-sm-4">
+                <input id="noOfChildren" asp-for="NoOfChildren" class="form-control" />
+            </div>
+            <br/>
+            <label class="col-sm-12">List all your children's names</label>
+            <br/>
+            @*<div class="form-group">*@
+            @*@{ for (int i = 0; i < Model.NoOfChildren; i++)
+                {*@
+                    <div class="form-group">
+                        <label asp-for="ChildFirstName1" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildFirstName1" class="form-control" />
+                        </div>
+                        <label asp-for="ChildLastName1" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildLastName1" class="form-control" />
+                        </div>
+                        <label asp-for="ChildDOB1" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildDOB1" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChildFirstName2" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildFirstName2" class="form-control" />
+                        </div>
+                        <label asp-for="ChildLastName2" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildLastName2" class="form-control" />
+                        </div>
+                        <label asp-for="ChildDOB2" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildDOB2" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChildFirstName3" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildFirstName3" class="form-control" />
+                        </div>
+                        <label asp-for="ChildLastName3" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildLastName3" class="form-control" />
+                        </div>
+                        <label asp-for="ChildDOB3" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildDOB3" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChildFirstName4" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildFirstName4" class="form-control" />
+                        </div>
+                        <label asp-for="ChildLastName4" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildLastName4" class="form-control" />
+                        </div>
+                        <label asp-for="ChildDOB4" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-2">
+                            <input asp-for="ChildDOB4" class="form-control" />
+                        </div>
+                    </div>
+
+                @*}
+            }*@
+            @*<button id="btnAddChild" type="submit" class="btn btn-default">Add Child</button>*@
+            @*</div>*@
+            <div class="form-group">
+                <label asp-for="IsChildAtSchool" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="IsChildAtSchool" id="childCPSChk" />
+                </div>
+                <div class="childCPSDiv" style="display: none;">
+                    <label asp-for="NoOfChildrenAtSchool" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-4">
+                        <input asp-for="NoOfChildrenAtSchool" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="border: 1px solid lightgrey">
+            <label class="col-sm-12">Person to contact in case of Emergency other than yourself</label>
+            <div class="form-group">
+                <label asp-for="EmergencyName" class="col-sm-2 control-label"></label>
+                <div class="col-sm-2">
+                    <input asp-for="EmergencyName" class="form-control" />
+                    <span asp-validation-for="EmergencyName" class="alert-danger"></span>
+                </div>
+                <label asp-for="Relationship" class="col-sm-2 control-label"></label>
+                <div class="col-sm-2">
+                    <input asp-for="Relationship" class="form-control" />
+                    <span asp-validation-for="Relationship" class="alert-danger"></span>
+                </div>
+                <label asp-for="EmergencyPhone" class="col-sm-2 control-label"></label>
+                <div class="col-sm-2">
+                    <input asp-for="EmergencyPhone" class="form-control" />
+                    <span asp-validation-for="EmergencyPhone" class="alert-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div style="border: 1px solid lightgrey">
+            <br />
+            <div class="form-group">
+                <label asp-for="OtherProg" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="OtherProg" class="form-control" />
+                </div>
+                <label asp-for="Comments" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="Comments" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group" style="border: 1px solid lightgrey">
+            <br />
+            <div class="form-group">
+                <label asp-for="IsPartOfTalentPool" class="col-sm-2 control-label"></label>
+                <div class="col-sm-2">
+                    <input asp-for="IsPartOfTalentPool" id="talentPoolChk" />
+                </div>
+                <div class="talentPoolDiv" style="display: none;">
+                    <label asp-for="AreaOfInterest" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-2">
+                        <input asp-for="AreaOfInterest" class="form-control" />
+                    </div>
+                    <label asp-for="TalentCapacity" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-2">
+                        <select asp-for="TalentCapacityID" asp-items="Model.TalentCapacity" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group talentPoolDiv" style="display: none;">
+                
+
+
+                <label asp-for="PathToResume" class="col-sm-2 control-label"></label>
+                <div class="col-sm-4">
+                    <input asp-for="PathToResume" class="form-control" />
+                    @*<input asp-for="PathToResume" type="file" id="fileLoader"/>*@
+                </div>
+                <div class="col-sm-2">
+                    @*<input type="button" id="btnOpenFileDialog" value="Browse" onclick="openfileDialog();" />*@
+                    <button type="submit" class="btn btn-default">Browse</button>
+                    <button type="submit" class="btn btn-default">Upload</button>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group" style="border: 1px solid lightgrey">
+            <p class="col-sm-2">Media Consent</p>
+            <p class="col-sm-10">
+                <!--style="border: 1px solid lightgrey"--> At times, supervising staff may take
+                photoes of you/your child during programs or events. By selecting this checkbox you consent
+                to your/your child's
+                photo to be used in promotional material published by the school, Community Hubs Australia,
+                Settlement Services International or other program supporting agency. This may include and not
+                limited to social media platforms, newsletter or annual report to promote the work of the hub.
+            </p>
+            <br />
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <input asp-for="IsMyPhotoConsent" />
+                </div>
+                <label asp-for="IsMyPhotoConsent" class="col-sm-6 control-label"></label>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <input asp-for="IsChildPhotoConsent"  />
+                </div>
+                <label asp-for="IsChildPhotoConsent" class="col-sm-6 control-label"></label>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group" style="border: 1px solid lightgrey">
+            <br />
+            <div class="form-group">
+                <div class="col-sm-1">
+                    <input asp-for="Signature"  />
+                    <span asp-validation-for="Signature" class="alert-danger"></span>
+                </div>
+                <label asp-for="Signature" class="col-sm-4 control-label"></label>
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button id="btnRegister" type="submit" class="btn btn-lg col-sm-2">Register</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#interpretorChk').click(function () {
+            $('.interpretorDropDown').toggle();
+        });
+
+        $('#talentPoolChk').click(function () {
+            $('.talentPoolDiv').toggle();
+        });
+
+        $('#childCPSChk').click(function () {
+            $('.childCPSDiv').toggle();
+        });
+
+        $('#btnRegister').click(function ()
+        {
+            var selectedLang = [];
+            $('.selLangCheck').each(function () {
+                if ($(this).prop("checked")) {
+                    selectedLang.push($(this).val());
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "/Registration/SetSelectedSpokenLang",
+                contentType: "application/json; charset=utf-8",
+                data: '{"spokenLang":"' + $(selectedLang) + '"}'
+                //,
+                //dataType: "html",
+                //success: function (result, status, xhr) {
+                //    $("#dataDiv").html(result);
+                //},
+                //error: function (xhr, status, error) {
+                //    $("#dataDiv").html("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+                //}
+            });  
+            @*@Model.SelectedSpokenLang = selectedLang;*@
+            //$('#hiddenSelSpokenLang').
+        });
+        
+
+        //function openfileDialog() {
+        //    $("#fileLoader").click();
+        //}
+    });
+
+             
+
+    //$('#noOfChildren').focusout(function () {
+    //    $('#noOfChildren').text("focusout fired");
+    //});
+
+    
+</script>
+
+
